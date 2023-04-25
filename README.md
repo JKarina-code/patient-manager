@@ -23,7 +23,10 @@ This project is a tool made in vanilla javascript to manage the appointments of 
 ![patient](https://user-images.githubusercontent.com/29663094/234426619-eba221a4-04d3-4d2b-b902-5ab681142a98.png)
 
 ### Editing an appointment
-![patient-edit](https://user-images.githubusercontent.com/29663094/234426667-83b6bd3a-37e9-4289-aaab-bbcb95bd144d.png)
+
+![ed-patient](https://user-images.githubusercontent.com/29663094/234428463-bc23cfcb-c5fb-4b77-82b4-e56e6f8fa9fc.png)
+
+![patient-edit](https://user-images.githubusercontent.com/29663094/234429128-cfb166d4-0ece-47b1-883d-a5b8b8f985ea.png)
 
 ### Deleting an appointment
 ![patient-delete](https://user-images.githubusercontent.com/29663094/234426713-3b0f0de8-abdd-4dba-a037-71f592d1d5b5.png)
