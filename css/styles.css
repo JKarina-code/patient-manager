@@ -1,0 +1,63 @@
+html {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+  background-image: linear-gradient(-25deg, #092079 0%, #09790c 52%, #00d4ff 100%);
+  min-height: 100%;
+  padding-bottom: 5rem;
+}
+
+.title {
+  font-weight: bold;
+  font-size: 3rem;
+  text-transform: uppercase;
+  color: white;
+}
+
+.container {
+  background-color: white;
+}
+
+header {
+  margin-top: 3rem;
+}
+
+header h1 {
+  color: white;
+}
+
+.list-appointments .appointment {
+  border-bottom: 1px solid #e1e1e1;
+  padding: 2rem;
+  padding-bottom: 3rem;
+
+}
+
+.list-appointments .appointment:last-of-type {
+  border-bottom: 0;
+}
+
+.list-appointments .appointment p {
+  margin: 0;
+}
+
+.list-appointments .appointment button {
+  margin-top: 1rem !important;
+}
+
+.list-appointments .appointment span {
+  font-weight: bold;
+}
+
+textarea {
+  height: 200px !important;
+}
+
+svg {
+  width: 21px;
+}
+
