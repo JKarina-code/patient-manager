@@ -7,6 +7,11 @@ const symptomsInput = document.querySelector("#symptoms");
 
 const formAppointment = document.querySelector("#new-appointment");
 const contentAppointments = document.querySelector("#appointments");
+let editing = false;
+
+// Heading
+const heading = document.querySelector("#manage");
+
 
 evenListeners();
 function evenListeners() {
@@ -20,8 +25,46 @@ function evenListeners() {
   //Form new appointment
   formAppointment.addEventListener("submit", newAppointment);
 }
+//Appointment in object
+const appointmentObj = {
+  pet: "",
+  owner: "",
+  telephone: "",
+  date: "",
+  hour: "",
+  symptoms: "",
+};
 
+//Data of appointment
+function appointmentData(e) {
+  appointmentObj[e.target.name] = e.target.value;
+}
+class Appointments {
+  constructor() {
+    this.appointments = [];
+  }
+
+  addAppointment(appointment) {
+    this.appointments = [...this.appointments, appointment];
+  }
+
+  deleteAppointment(id) {
+    this.appointments = this.appointments.filter(
+      (appointment) => appointment.id !== id
+    );
+  }
+
+  editAppointment(appointmentUpdate) {
+    this.appointments = this.appointments.map((appointment) =>
+      appointment.id === appointmentUpdate.id ? appointmentUpdate : appointment
+    );
+  }
+}
 class UI {
+  constructor({ appointments }) {
+    this.textoHeading(appointments);
+  }
+
   printAlert(message, type) {
     const divMessage = document.createElement("div");
     divMessage.classList.add("text-center", "alert", "d-block", "col-12");
@@ -42,6 +85,7 @@ class UI {
 
   printAppointments({ appointments }) {
     this.cleanHTML();
+    this.textoHeading(appointments);
     appointments.forEach((appointment) => {
       const { pet, owner, telephone, date, hour, symptoms, id } = appointment;
 
@@ -97,6 +141,13 @@ class UI {
     });
   }
 
+  textoHeading(appointments) {
+    if (appointments.length > 0) {
+      heading.textContent = "Manage your Appointments";
+    } else {
+      heading.textContent = "No Appointments, start by creating one";
+    }
+  }
   cleanHTML() {
     while (contentAppointments.firstChild) {
       contentAppointments.removeChild(contentAppointments.firstChild);
@@ -104,48 +155,8 @@ class UI {
   }
 }
 
-class Appointments {
-  constructor() {
-    this.appointments = [];
-  }
-
-  addAppointment(appointment) {
-    this.appointments = [...this.appointments, appointment];
-  }
-
-  deleteAppointment(id) {
-    this.appointments = this.appointments.filter(
-      (appointment) => appointment.id !== id
-    );
-  }
-
-  editAppointment(appointmentUpdate) {
-    this.appointments = this.appointments.map((appointment) =>
-      appointment.id === appointmentUpdate.id ? appointmentUpdate : appointment
-    );
-  }
-}
-
-const ui = new UI();
 const manageAppointments = new Appointments();
-
-//Appointment in object
-const appointmentObj = {
-  pet: "",
-  owner: "",
-  telephone: "",
-  date: "",
-  hour: "",
-  symptoms: "",
-};
-
-let editing = false;
-
-//Data of appointment
-function appointmentData(e) {
-  appointmentObj[e.target.name] = e.target.value;
-}
-
+const ui = new UI(manageAppointments);
 function newAppointment(e) {
   e.preventDefault();
   const { pet, owner, telephone, date, hour, symptoms } = appointmentObj;
